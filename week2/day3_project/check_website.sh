@@ -1,9 +1,14 @@
 #!/bin/bash
-# check_website.sh - Simple uptime checker
+# Day 3: Website Uptime Checker
+# Asks for a website URL, pings it, and reports status
 
-URL="https://google.com"
-if curl -s --head "$URL" | grep "200 OK" > /dev/null; then
-    echo "$(date) - $URL is up" >> website_status.log
+echo "Enter a website URL (e.g., google.com):"
+read WEBSITE
+
+ping -c 2 $WEBSITE > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+  echo "✅ $WEBSITE is UP!"
 else
-    echo "$(date) - $URL is down" >> website_status.log
+  echo "❌ $WEBSITE is DOWN!"
 fi

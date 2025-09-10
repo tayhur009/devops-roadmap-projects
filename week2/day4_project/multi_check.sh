@@ -1,5 +1,6 @@
 #!/bin/bash
-# Multi-Website Uptime Monitor
+# Day 4: Multi-Website Uptime Monitor
+# Loops through multiple websites, pings them, logs status with timestamp
 
 SITES=("google.com" "github.com" "fakewebsite.dev")
 LOGFILE="website_status.log"
@@ -15,5 +16,6 @@ do
       echo "$(date) - ❌ $SITE is DOWN" >> $LOGFILE
     fi
   done
-  sleep 10  # wait 10 seconds before next check
+  echo "Check complete. Sleeping for 10 seconds..."
+  sleep 10
 done
